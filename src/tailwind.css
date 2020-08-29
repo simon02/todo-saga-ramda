@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+
+input[type="text"] {
+  @apply outline-none border border-gray-500 border-gray-600 rounded py-2 px-3 mb-2;
+}
+input[type="text"]:hover {
+  @apply border-gray-600;
+}
+
+@tailwind utilities;
