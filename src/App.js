@@ -7,6 +7,7 @@ import './tailwind.output.css';
 import TaskList from './stories/TaskList';
 import Task from './stories/Task';
 import TaskForm from './stories/TaskForm';
+import MenuList from './stories/MenuList';
 
 const taskExists = (id) => R.any(R.propEq('id', id))
 const findTaskById = (id, ...args) => {
@@ -21,6 +22,11 @@ const findTaskById = (id, ...args) => {
 
 function App() {
   const [tasks, setTasks] = useState([]);
+  const [menuItems, setMenuItems] = useState([
+    { title: 'All' },
+    { title: 'Overdue' },
+    { title: 'Uncategorized' },
+  ])
 
   const addTask = (task) => {
     setTasks([
@@ -45,11 +51,18 @@ function App() {
   }
 
   return (
-    <>
-      <TaskList tasks={tasks} onToggleTask={(id) => toggleTask(id)} />
-      <h3>Add a new task:</h3>
-      <TaskForm onSubmitTask={addTask} />
-    </>
+    <div className="flex flex-row h-screen">
+      <div className="w-48 bg-gray-600">
+        <MenuList menuItems={menuItems} onAddNewItem={true} />
+      </div>
+      <div className="flex-1">
+        <TaskList tasks={tasks} onToggleTask={(id) => toggleTask(id)} />
+        <div className="m-5">
+          <h3 className="font-semibold text-gray-700 text-lg mb-2">Add a new task:</h3>
+          <TaskForm onSubmitTask={addTask} />
+        </div>
+      </div>
+    </div>
   );
 }
 

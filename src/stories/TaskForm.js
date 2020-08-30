@@ -35,7 +35,7 @@ export default function TaskForm({ task, onSubmitTask }) {
   }
 
   return (
-    <form class="flex flex-col default" onSubmit={saveTask}>
+    <form className="flex flex-col default" onSubmit={saveTask}>
       <input className={INPUT} type="text" name="title" value={newTask.title} placeholder="Title" onChange={handleInputChange} />
       <DatePicker placeholderText="MM/DD/YYYY" selected={newTask.completeBy} onChange={date => handleInputChange({target: { name: 'completeBy', value: date }})} />
       <input className={INPUT} type="text" name="category" value={newTask.category} placeholder="Category" onChange={handleInputChange} />
