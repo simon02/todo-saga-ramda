@@ -618,7 +618,7 @@ video {
   }
 }
 
-input[type="text"] {
+.default input[type="text"] {
   outline: 0;
   border-width: 1px;
   --border-opacity: 1;
@@ -635,7 +635,7 @@ input[type="text"] {
   margin-bottom: 0.5rem;
 }
 
-input[type="text"]:hover {
+.default input[type="text"]:hover {
   --border-opacity: 1;
   border-color: #718096;
   border-color: rgba(113, 128, 150, var(--border-opacity));

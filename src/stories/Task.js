@@ -5,7 +5,7 @@ import './Task.css';
 import DateText from './DateText';
 import moment from 'moment';
 
-const TASK_TITLE_BASE = "flex-1 bg-transparent w-full";
+const TASK_TITLE_BASE = "outline-none flex-1 bg-transparent w-full p-0";
 const TASK_TITLE = `${TASK_TITLE_BASE} text-gray-900`
 const TASK_COMPLETED_TITLE = `${TASK_TITLE_BASE} line-through text-gray-500`;
 const DATE_BASE = 'text-xs';
@@ -15,12 +15,18 @@ const DATE_OVERTIME = `${DATE_BASE} text-red-700 font-semibold`;
 export default function Task({ task: { id, title, state, category, tags = [], completeBy }, onToggleTask, className }) {
   const completed = state === 'TASK_COMPLETED';
   const overtime = moment().isAfter(completeBy);
+
   const categoryElement = category ? (
     <>
       <span>{category}</span>
       {tags?.length ? <BsDot className="text-gray-500" /> : ''}
     </>
   ) : '';
+  const dateElement = !completeBy ? '' : (
+    <span className={overtime && !completed ? DATE_OVERTIME : DATE}>
+      <DateText date={completeBy} />
+    </span>
+  );
 
   return (
     <div className={`bg-gray-100 p-2 flex items-center ${className}`}>
@@ -39,9 +45,7 @@ export default function Task({ task: { id, title, state, category, tags = [], co
           ))}
         </div>
       </div>
-      <span className={overtime && !completed ? DATE_OVERTIME : DATE}>
-        <DateText date={completeBy} />
-      </span>
+      {dateElement}
     </div>
   );
 }
