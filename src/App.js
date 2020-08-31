@@ -8,6 +8,7 @@ import TaskList from './stories/TaskList';
 import Task from './stories/Task';
 import TaskForm from './stories/TaskForm';
 import MenuList from './stories/MenuList';
+import AddTaskCondensed from './stories/AddTaskCondensed';
 
 const taskExists = (id) => R.any(R.propEq('id', id))
 const findTaskById = (id, ...args) => {
@@ -51,7 +52,7 @@ function App() {
   }
 
   const EmptyTasks = () => (
-    <span className="flex m-5 text-gray-500 text-2xl italic font-light">
+    <span className="flex m-5 text-blue-600 text-2xl italic font-light">
       No tasks found.
     </span>
   );
@@ -63,8 +64,9 @@ function App() {
       </div>
       <div className="flex-1">
         <TaskList tasks={tasks} onToggleTask={(id) => toggleTask(id)} empty={<EmptyTasks />} />
+        <AddTaskCondensed onAddTask={''} />
         <div className="m-5">
-          <h3 className="font-semibold text-gray-700 text-lg mb-2">Add a new task:</h3>
+          <h3 className="font-thin text-gray-500 text-lg mb-2">Add a new task:</h3>
           <TaskForm onSubmitTask={addTask} />
         </div>
       </div>
