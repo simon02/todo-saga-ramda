@@ -28,7 +28,8 @@ Default.args = {
     createTask({ id: 1, tags: ['tag1'] }),
     createTask({ id: 2, category: 'work',tags: ['tag1', 'tag2'] }),
     createTask({ id: 3 }),
-  ]
+  ],
+  empty: <span>No tasks found.</span>,
 }
 
 export const WithCompletedItems = Template.bind({});
@@ -38,7 +39,8 @@ WithCompletedItems.args = {
     createTask({ id: 2 }),
     createTask({ id: 3, state: 'TASK_COMPLETED' }),
     createTask({ id: 4, state: 'TASK_COMPLETED' }),
-  ]
+  ],
+  empty: <span>No tasks found.</span>,
 }
 
 export const SortedByCompletionDate = Template.bind({});
@@ -48,10 +50,12 @@ SortedByCompletionDate.args = {
     createTask({ id: 2, category: 'work',tags: ['tag1', 'tag2'] }),
     createTask({ id: 3, completeBy: dateInDays(2) }),
     createTask({ id: 4, completeBy: dateInDays(200) }),
-  ]
+  ],
+  empty: <span>No tasks found.</span>,
 }
 
 export const Empty = Template.bind({});
 Empty.args = {
-  tasks: []
+  tasks: [],
+  empty: <span>No tasks found.</span>,
 }

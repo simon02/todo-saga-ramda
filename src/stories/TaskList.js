@@ -9,7 +9,7 @@ const sortByCompleteBy = R.sortBy(R.prop('completeBy'));
 
 const taskClassName = (index, length) => index < length - 1 ? 'border-b border-gray-300' : '';
 
-export default function TaskList({ tasks, onToggleTask }) {
+export default function TaskList({ tasks, empty, onToggleTask }) {
   const events = {
     onToggleTask,
   };
@@ -17,15 +17,10 @@ export default function TaskList({ tasks, onToggleTask }) {
   const completed = completedTasks(tasks);
   const uncompleted = sortByCompleteBy(uncompletedTasks(tasks));
 
-  // const toggleTask = id => {
-  //   console.log('task list toggle triggered');
-  //   onToggleTask(id);
-  // };
-
-  if (!completed.length && !uncompleted.length) {
+  if (!tasks.length) {
     return (
-      <h4>Much empty</h4>
-    )
+      <div>{empty}</div>
+    );
   }
 
   const renderTasks = (tasks) => (

@@ -50,13 +50,19 @@ function App() {
     ])
   }
 
+  const EmptyTasks = () => (
+    <span className="flex m-5 text-gray-500 text-2xl italic font-light">
+      No tasks found.
+    </span>
+  );
+
   return (
     <div className="flex flex-row h-screen">
       <div className="w-48 bg-gray-600">
         <MenuList menuItems={menuItems} onAddNewItem={true} />
       </div>
       <div className="flex-1">
-        <TaskList tasks={tasks} onToggleTask={(id) => toggleTask(id)} />
+        <TaskList tasks={tasks} onToggleTask={(id) => toggleTask(id)} empty={<EmptyTasks />} />
         <div className="m-5">
           <h3 className="font-semibold text-gray-700 text-lg mb-2">Add a new task:</h3>
           <TaskForm onSubmitTask={addTask} />
