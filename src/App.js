@@ -1,14 +1,12 @@
 import React, { useState } from 'react';
 import * as R from 'ramda';
 
-import logo from './logo.svg';
 import './App.css';
 import './tailwind.output.css';
-import TaskList from './stories/TaskList';
-import Task from './stories/Task';
+import TaskListContainer from './stories/containers/TaskList';
 import TaskForm from './stories/TaskForm';
 import MenuList from './stories/MenuList';
-import AddTaskCondensed from './stories/AddTaskCondensed';
+import AddTask from './stories/containers/AddTask';
 
 const taskExists = (id) => R.any(R.propEq('id', id))
 const findTaskById = (id, ...args) => {
@@ -63,8 +61,8 @@ function App() {
         <MenuList menuItems={menuItems} onAddNewItem={true} />
       </div>
       <div className="flex-1">
-        <TaskList tasks={tasks} onToggleTask={(id) => toggleTask(id)} empty={<EmptyTasks />} />
-        <AddTaskCondensed onAddTask={''} />
+        <TaskListContainer empty={<EmptyTasks />} />
+        <AddTask />
         <div className="m-5">
           <h3 className="font-thin text-gray-500 text-lg mb-2">Add a new task:</h3>
           <TaskForm onSubmitTask={addTask} />

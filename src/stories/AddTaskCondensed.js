@@ -19,7 +19,7 @@ export default function AddTaskCondensed({ onAddTask }) {
         category: parsedTask.match(CATEGORIES_REGEXP)?.[0].replace(CATEGORIES_REGEXP, '$1'),
         tags: parsedTask.match(TAGS_REGEXP)?.map(tag => tag.replace(TAGS_REGEXP, '$1')) || [],
       };
-      console.log(t);
+      onAddTask(t);
       return;
     }
   }, [task]);

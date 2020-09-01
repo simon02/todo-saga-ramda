@@ -14,17 +14,14 @@ export default function MenuList({ menuItems, onAddNewItem }) {
       setShowInput(true);
     }
 
-    const IconEl = <BsPlusCircleFill />;
     const InputEl = () => {
-      const [input, setInput] = useState('');
-
       const onKeyPress = useCallback((event) => {
         if (event.which === 13) {
           setShowInput(false);
         } else if (event.which === 27) {
           setShowInput(false);
         }
-      });
+      }, []);
 
       useEffect(() => {
         document.addEventListener('keydown', onKeyPress, false);
