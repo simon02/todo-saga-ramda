@@ -1,18 +1,11 @@
-import * as R from 'ramda';
 import React, { useState } from 'react';
 import './App.css';
 import AddTask from './stories/containers/AddTask';
+import MenuListContainer from './stories/containers/MenuListContainer';
 import TaskListContainer from './stories/containers/TaskList';
-import MenuList from './stories/MenuList';
 import './tailwind.output.css';
 
 function App() {
-  const [menuItems, setMenuItems] = useState([
-    { title: 'All' },
-    { title: 'Overdue' },
-    { title: 'Uncategorized' },
-  ]);
-
   const EmptyTasks = () => (
     <span className="flex m-5 text-blue-600 text-2xl italic font-light">
       No tasks found.
@@ -22,7 +15,7 @@ function App() {
   return (
     <div className="flex flex-row h-screen">
       <div className="w-48 bg-gray-600">
-        <MenuList menuItems={menuItems} onAddNewItem={true} />
+        <MenuListContainer />
       </div>
       <div className="flex-1">
         <TaskListContainer empty={<EmptyTasks />} />

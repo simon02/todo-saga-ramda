@@ -1,4 +1,6 @@
 import { createSlice, combineReducers } from '@reduxjs/toolkit';
+import { add } from '../menu/menuSlice';
+import { store } from '../../index';
 
 let taskId = 1;
 
@@ -12,6 +14,11 @@ const taskSlice = createSlice({
           ...action.payload,
           completed: false,
         });
+
+        // debugger;
+        // if (action.payload?.category) {
+        //   store.dispatch(add(action.payload.category));
+        // }
       },
       prepare(payload) {
         return {

@@ -27,6 +27,7 @@ export default function AddTaskCondensed({ onAddTask }) {
 
         const extractedTask = extractTaskInfo(parseDom(task));
         onAddTask(extractedTask);
+
         setTask('');
       }
     },
