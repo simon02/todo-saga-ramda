@@ -6,13 +6,8 @@ import TaskList from '../TaskList';
 import { toggleTask } from '../../actions';
 
 const TaskListContainer = (props) => {
-  console.log(props)
-
-  return (
-    <TaskList {...props} />
-    // <span>test</span>
-  )
-}
+  return <TaskList {...props} />;
+};
 
 function mapStateToProps(state) {
   return {

@@ -8,7 +8,7 @@ import TaskForm from './stories/TaskForm';
 import MenuList from './stories/MenuList';
 import AddTask from './stories/containers/AddTask';
 
-const taskExists = (id) => R.any(R.propEq('id', id))
+const taskExists = (id) => R.any(R.propEq('id', id));
 const findTaskById = (id, ...args) => {
   const findById = R.find(R.propEq('id', id));
 
@@ -17,7 +17,7 @@ const findTaskById = (id, ...args) => {
   }
 
   return findById;
-}
+};
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -25,29 +25,7 @@ function App() {
     { title: 'All' },
     { title: 'Overdue' },
     { title: 'Uncategorized' },
-  ])
-
-  const addTask = (task) => {
-    setTasks([
-      ...tasks,
-      {
-        ...task,
-        id: tasks.length,
-      }
-    ]);
-  }
-
-  const toggleTask = (taskId) => {
-    const task = R.find(R.propEq('id', taskId))(tasks);
-
-    setTasks([
-      ...R.reject(R.propEq('id', taskId))(tasks),
-      {
-        ...task,
-        state: task.state === 'TASK_COMPLETED' ? 'TASK_INBOX' : 'TASK_COMPLETED',
-      }
-    ])
-  }
+  ]);
 
   const EmptyTasks = () => (
     <span className="flex m-5 text-blue-600 text-2xl italic font-light">
@@ -64,8 +42,10 @@ function App() {
         <TaskListContainer empty={<EmptyTasks />} />
         <AddTask />
         <div className="m-5">
-          <h3 className="font-thin text-gray-500 text-lg mb-2">Add a new task:</h3>
-          <TaskForm onSubmitTask={addTask} />
+          <h3 className="font-thin text-gray-500 text-lg mb-2">
+            Add a new task:
+          </h3>
+          {/* <TaskForm onSubmitTask={addTask} /> */}
         </div>
       </div>
     </div>

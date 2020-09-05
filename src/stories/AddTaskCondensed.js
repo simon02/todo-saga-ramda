@@ -20,9 +20,14 @@ export default function AddTaskCondensed({ onAddTask }) {
     (event) => {
       if (event.which === 13) {
         event.preventDefault();
+
+        if (!task) {
+          return;
+        }
+
         const extractedTask = extractTaskInfo(parseDom(task));
         onAddTask(extractedTask);
-        return;
+        setTask('');
       }
     },
     [task],
@@ -51,7 +56,7 @@ export default function AddTaskCondensed({ onAddTask }) {
       <ContentEditable
         html={task}
         onChange={onHandleChange}
-        onKeyUp={onKeyPress}
+        onKeyPress={onKeyPress}
         placeholder="Enter a new task, use # to add a category, ~ for tags and press enter to save"
         className={`${INPUT} m-5`}
       />
