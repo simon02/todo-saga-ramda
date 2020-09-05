@@ -4,10 +4,8 @@ import { addTask } from '../../actions';
 import AddTaskCondensed from '../AddTaskCondensed';
 
 const AddTask = ({ addTask }) => {
-  return (
-    <AddTaskCondensed onAddTask={addTask} />
-  )
-}
+  return <AddTaskCondensed onAddTask={addTask} />;
+};
 
 export default connect(null, {
   addTask,
