@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addTask } from '../../actions';
+import { addTask } from '../../features/tasks/tasksSlice';
 import AddTaskCondensed from '../AddTaskCondensed';
 
 const AddTask = ({ addTask }) => {

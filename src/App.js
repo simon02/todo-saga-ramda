@@ -1,26 +1,12 @@
-import React, { useState } from 'react';
 import * as R from 'ramda';
-
+import React, { useState } from 'react';
 import './App.css';
-import './tailwind.output.css';
-import TaskListContainer from './stories/containers/TaskList';
-import TaskForm from './stories/TaskForm';
-import MenuList from './stories/MenuList';
 import AddTask from './stories/containers/AddTask';
-
-const taskExists = (id) => R.any(R.propEq('id', id));
-const findTaskById = (id, ...args) => {
-  const findById = R.find(R.propEq('id', id));
-
-  if (args.length) {
-    return findById(...args);
-  }
-
-  return findById;
-};
+import TaskListContainer from './stories/containers/TaskList';
+import MenuList from './stories/MenuList';
+import './tailwind.output.css';
 
 function App() {
-  const [tasks, setTasks] = useState([]);
   const [menuItems, setMenuItems] = useState([
     { title: 'All' },
     { title: 'Overdue' },

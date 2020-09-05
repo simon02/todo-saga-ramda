@@ -2,7 +2,7 @@ import React from 'react';
 import * as R from 'ramda';
 import Task from './Task';
 
-const taskCompleted = R.where({ state: R.equals('TASK_COMPLETED') });
+const taskCompleted = R.where({ completed: R.equals(true) });
 const completedTasks = R.filter(taskCompleted);
 const uncompletedTasks = R.reject(taskCompleted);
 const sortByCompleteBy = R.sortBy(R.prop('completeBy'));
@@ -18,9 +18,6 @@ export default function TaskList({ tasks = [], empty, onToggleTask }) {
 
   const completed = completedTasks(tasks);
   const uncompleted = sortByCompleteBy(uncompletedTasks(tasks));
-
-  console.log('completed', completed);
-  console.log('not completed', uncompleted);
 
   if (!tasks.length) {
     return <div>{empty}</div>;
@@ -49,7 +46,6 @@ export default function TaskList({ tasks = [], empty, onToggleTask }) {
       ) : (
         ''
       )}
-      {/* {renderTasks(completed)} */}
       <RenderTasks tasks={completed} />
     </>
   );
