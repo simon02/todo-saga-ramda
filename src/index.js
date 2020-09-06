@@ -1,4 +1,8 @@
-import { configureStore, combineReducers } from '@reduxjs/toolkit';
+import {
+  configureStore,
+  combineReducers,
+  getDefaultMiddleware,
+} from '@reduxjs/toolkit';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
@@ -7,18 +11,22 @@ import App from './App';
 import taskReducer, { addTask } from './features/tasks/tasksSlice';
 import menuReducer, { add } from './features/menu/menuSlice';
 import moment from 'moment';
+import rootSaga from './sagas';
 
 import './index.css';
 import * as serviceWorker from './serviceWorker';
 
 const sagaMiddleware = createSagaMiddleware();
-// const store = createStore(rootReducer, applyMiddleware(sagaMiddleware));
+
 export const store = configureStore({
   reducer: combineReducers({
     tasks: taskReducer,
     menu: menuReducer,
   }),
+  middleware: [...getDefaultMiddleware(), sagaMiddleware],
 });
+
+sagaMiddleware.run(rootSaga);
 
 store.dispatch(add('tutorial'));
 store.dispatch(
@@ -50,8 +58,6 @@ store.dispatch(
     category: 'tutorial',
   }),
 );
-
-// sagaMiddleware.run(rootSaga);
 
 ReactDOM.render(
   <Provider store={store}>

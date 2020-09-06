@@ -1,6 +1,4 @@
-import { createSlice, combineReducers } from '@reduxjs/toolkit';
-import { add } from '../menu/menuSlice';
-import { store } from '../../index';
+import { createSlice } from '@reduxjs/toolkit';
 
 let taskId = 1;
 
