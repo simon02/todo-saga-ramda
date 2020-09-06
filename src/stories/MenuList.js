@@ -62,13 +62,14 @@ export default function MenuList({
   };
 
   const Menu = ({ title, count, isSelected }) => {
-    const CountEl = !count ? (
-      ''
-    ) : (
-      <span class="bg-blue-600 px-2 text-xs rounded-md text-gray-300 font-semibold border-blue-700 border">
-        {count}
-      </span>
-    );
+    const CountEl =
+      count === undefined ? (
+        ''
+      ) : (
+        <span className="bg-blue-600 px-2 text-xs rounded-md text-gray-300 font-semibold border-blue-700 border">
+          {count}
+        </span>
+      );
     const anchorClass = ANCHOR_CLASS + (isSelected ? ' bg-blue-800' : '');
 
     return (
@@ -85,9 +86,9 @@ export default function MenuList({
     <ul className="flex flex-col p-0 text-white">
       {menuItems.map((menuItem) => (
         <Menu
-          key={menuItem}
-          title={menuItem}
-          isSelected={menuItem === selected}
+          key={menuItem.title}
+          isSelected={menuItem.title === selected}
+          {...menuItem}
         />
       ))}
       {onAddNewItem ? <AddNewItem /> : ''}
