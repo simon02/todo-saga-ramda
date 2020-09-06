@@ -10,9 +10,15 @@ const sortByCompleteBy = R.sortBy(R.prop('completeBy'));
 const taskClassName = (index, length) =>
   index < length - 1 ? 'border-b border-gray-300' : '';
 
-export default function TaskList({ tasks = [], empty, onToggleTask }) {
+export default function TaskList({
+  tasks = [],
+  empty,
+  onToggleTask,
+  filterCategory,
+}) {
   const events = {
     onToggleTask,
+    filterCategory,
   };
 
   const completed = completedTasks(tasks);

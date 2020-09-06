@@ -1,9 +1,10 @@
-import React from 'react';
-import { FiCheckSquare, FiSquare } from 'react-icons/fi';
-import { BsDot } from 'react-icons/bs';
-import './Task.css';
-import DateText from './DateText';
 import moment from 'moment';
+import React from 'react';
+import { BsDot } from 'react-icons/bs';
+import { FiCheckSquare, FiSquare } from 'react-icons/fi';
+import DateText from './DateText';
+import { select } from '../features/menu/menuSlice';
+import './Task.css';
 
 const TASK_TITLE_BASE = 'outline-none flex-1 bg-transparent w-full p-0';
 const TASK_TITLE = `${TASK_TITLE_BASE} text-gray-900`;
@@ -15,13 +16,14 @@ const DATE_OVERTIME = `${DATE_BASE} text-red-700 font-semibold`;
 export default function Task({
   task: { id, title, completed, category, tags = [], completeBy },
   onToggleTask,
+  filterCategory,
   className,
 }) {
   const overtime = moment().isAfter(completeBy);
 
   const categoryElement = category ? (
     <>
-      <span>{category}</span>
+      <button onClick={() => filterCategory(category)}>#{category}</button>
       {tags?.length ? <BsDot className="text-gray-500" /> : ''}
     </>
   ) : (
@@ -62,7 +64,7 @@ export default function Task({
           {categoryElement}
           {tags.map((tag) => (
             <span key={tag} className="mr-1 italic">
-              #{tag}
+              ~{tag}
             </span>
           ))}
         </div>
