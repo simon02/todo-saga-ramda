@@ -85,10 +85,9 @@ export default function MenuList({
     <ul className="flex flex-col p-0 text-white">
       {menuItems.map((menuItem) => (
         <Menu
-          key={menuItem.title}
+          key={menuItem}
           title={menuItem}
           isSelected={menuItem === selected}
-          {...menuItem}
         />
       ))}
       {onAddNewItem ? <AddNewItem /> : ''}

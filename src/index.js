@@ -28,6 +28,7 @@ store.dispatch(
     category: 'tutorial',
   }),
 );
+
 store.dispatch(
   addTask({
     title: 'Get started by adding your own todos',

@@ -10,10 +10,7 @@ const taskSlice = createSlice({
   reducers: {
     addTask: {
       reducer(state, action) {
-        state.push({
-          ...action.payload,
-          completed: false,
-        });
+        state.push(action.payload);
 
         // debugger;
         // if (action.payload?.category) {
@@ -25,6 +22,8 @@ const taskSlice = createSlice({
           payload: {
             ...payload,
             id: taskId++,
+            completeBy: payload.completeBy?.valueOf(),
+            completed: false,
           },
         };
       },
