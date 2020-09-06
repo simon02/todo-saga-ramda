@@ -1,14 +1,8 @@
-import { takeEvery, put, call } from 'redux-saga/effects';
-import { addTask } from '../features/tasks/tasksSlice';
+import { call, fork, put, takeEvery } from 'redux-saga/effects';
 import { add } from '../features/menu/menuSlice';
-import { all } from 'ramda';
+import { addTask } from '../features/tasks/tasksSlice';
 
-function* helloSaga() {
-  console.log('Hello Saga!');
-}
-
-function* addTaskExtended(task) {
-  yield call(helloSaga);
+function* addTaskExtended({ task }) {
   yield put(addTask(task));
 
   if (task.category) {
@@ -17,9 +11,9 @@ function* addTaskExtended(task) {
 }
 
 function* watchRequestTask() {
-  yield takeEvery('ADD_TASK_COMPLEX', addTaskExtended);
+  yield takeEvery('ADD_TASK_EXTENDED', addTaskExtended);
 }
 
 export default function* rootSaga() {
-  yield all([helloSaga(), watchRequestTask()]);
+  yield fork(watchRequestTask);
 }

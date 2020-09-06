@@ -11,10 +11,14 @@ const AddTask = ({ addTask }) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     addTask: (task) => {
-      dispatch(addTask(task));
-      if (task.category) {
-        dispatch(add(task.category));
-      }
+      // dispatch(addTask(task));
+      // if (task.category) {
+      //   dispatch(add(task.category));
+      // }
+      dispatch({
+        type: 'ADD_TASK_EXTENDED',
+        task,
+      });
     },
   };
 };
