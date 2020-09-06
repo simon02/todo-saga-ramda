@@ -3,7 +3,10 @@ import { BsPlusCircleFill } from 'react-icons/bs';
 
 const LIST_ITEM_CLASS = 'box-content flex m-0 border-gray-700 border-b';
 const ANCHOR_CLASS =
-  'cursor-pointer text-left flex items-center box-content w-full text-white px-3 h-10 bg-gray-600 hover:bg-blue-700';
+  'focus:outline-none cursor-pointer text-left flex items-center box-content w-full text-white ' +
+  'px-3 h-10 bg-gray-600 hover:bg-blue-700';
+const COUNT_CLASS =
+  'bg-blue-600 px-2 text-xs rounded-md text-gray-300 font-semibold border-blue-700 border';
 
 export default function MenuList({
   menuItems,
@@ -62,14 +65,9 @@ export default function MenuList({
   };
 
   const Menu = ({ title, count, isSelected }) => {
+    const countClass = COUNT_CLASS + (isSelected ? ' border-blue-800' : '');
     const CountEl =
-      count === undefined ? (
-        ''
-      ) : (
-        <span className="bg-blue-600 px-2 text-xs rounded-md text-gray-300 font-semibold border-blue-700 border">
-          {count}
-        </span>
-      );
+      count === undefined ? '' : <span className={countClass}>{count}</span>;
     const anchorClass = ANCHOR_CLASS + (isSelected ? ' bg-blue-800' : '');
 
     return (
