@@ -3,7 +3,6 @@ import React from 'react';
 import { BsDot } from 'react-icons/bs';
 import { FiCheckSquare, FiSquare } from 'react-icons/fi';
 import DateText from './DateText';
-import { select } from '../features/menu/menuSlice';
 import './Task.css';
 
 const TASK_TITLE_BASE = 'outline-none flex-1 bg-transparent w-full p-0';

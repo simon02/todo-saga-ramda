@@ -1,4 +1,4 @@
-import { call, fork, put, takeEvery } from 'redux-saga/effects';
+import { fork, put, takeEvery } from 'redux-saga/effects';
 import { add } from '../features/menu/menuSlice';
 import { addTask } from '../features/tasks/tasksSlice';
 

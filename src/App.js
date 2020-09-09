@@ -21,9 +21,9 @@ function App() {
         <TaskListContainer empty={<EmptyTasks />} />
         <AddTask />
         <div className="m-5">
-          <h3 className="font-thin text-gray-500 text-lg mb-2">
+          {/* <h3 className="font-thin text-gray-500 text-lg mb-2">
             Add a new task:
-          </h3>
+          </h3> */}
           {/* <TaskForm onSubmitTask={addTask} /> */}
         </div>
       </div>

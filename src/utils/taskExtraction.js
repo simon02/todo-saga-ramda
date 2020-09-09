@@ -2,7 +2,7 @@ import * as R from 'ramda';
 
 const CATEGORIES_REGEXP = new RegExp(/#(\S+)/, 'g');
 const TAGS_REGEXP = new RegExp(/~(\S+)/, 'g');
-const DATE_REGEXP = new RegExp(/@(\d{1,2}[-\/]\d{1,2}[-\/]?(\d{2})*)/, 'g');
+const DATE_REGEXP = new RegExp(/@(\d{1,2}[-/]\d{1,2}[-/]?(\d{2})*)/, 'g');
 
 export const replaceCategory = R.replace(CATEGORIES_REGEXP);
 export const replaceTags = R.replace(TAGS_REGEXP);
